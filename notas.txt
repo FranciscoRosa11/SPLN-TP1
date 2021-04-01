@@ -1,0 +1,15 @@
+Temos o site pagfam.geneall.net/3418/ com informações genealógicas.
+
+pagfam.geneall.net/3418/pessoas_search.php?id=... --> isto dá-nos a informação da pessoas_search
+
+Se a pessoa tiver um * é o ano em que nasceu.
+Se a pessoa tiver um + é o ano em que morreu.
+
+<NOBR> *(+) XXX </NOBR> --> é assim que aparece no html
+
+Ficheiro pessoal pode ser obtido juntando pagfam.geneall.net/3418/pessoas_search.php?id= ao id da pessoa. 
+A partir daqui extrair o nome da pessoa, informação de nascimento e/ou morte, os pais, casamentos, filhos, notas. 
+
+1) Extrair um "get" do ficheiro com um módulo "requests" --> get(URL)
+
+Fiquei nas 2h10min da Aula4
