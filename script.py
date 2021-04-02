@@ -1,8 +1,22 @@
 #!/usr/bin/python3
 
 from jjcli import *
+
+
 c=clfilter(opt="do:")
 
+
+for page in c.slurp():
+    identiNORMAL = findall(r'<li><A href="pessoas.php\?id=(\d+)">([\w \-]+|[A-Z\.\w \-]+)</A></li>',page)
+    for id,nome in identiNORMAL:
+        print(f"==> {id} {nome.strip()}")
+    identiFULL = findall(r'<li><A href="pessoas.php\?id=(\d+)">([\w \-]+)</A> <NOBR>(\* \d+|\+ \d+)</NOBR></li>',page)
+    for id,nome,dob in identiFULL:
+        print(f"==> {id} {nome.strip()} {dob}")
+
+#<li><A href="pessoas.php?id=1086999">Affonso Gonçalves</A></li>
+
+'''
 for page in c.slurp():
     nome = findall(r'<title>([\w \-]+)</title>', page)
     print(nome)
@@ -23,4 +37,4 @@ for page in c.slurp():
     print("A MAE É:")
     for id,nome in mae:
         print(f"==> {id} {nome.strip()}")
-    
+ '''   
