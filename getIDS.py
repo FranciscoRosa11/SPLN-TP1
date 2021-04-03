@@ -5,15 +5,19 @@ from jjcli import *
 
 c=clfilter(opt="do:")
 
+file = open("ids/ids.txt", "a")
 
 for page in c.slurp():
     identiNORMAL = findall(r'<li><A href="pessoas.php\?id=(\d+)">([\w \-]+|[A-Z\.\w \-]+)</A></li>',page)
     for id,nome in identiNORMAL:
         print(f"==> {id} {nome.strip()}")
+        file.write(id+"\n")
     identiFULL = findall(r'<li><A href="pessoas.php\?id=(\d+)">([\w \-]+)</A> <NOBR>(\* \d+|\+ \d+)</NOBR></li>',page)
     for id,nome,dob in identiFULL:
         print(f"==> {id} {nome.strip()} {dob}")
+        file.write(id+"\n")
 
+file.close()
 #<li><A href="pessoas.php?id=1086999">Affonso Gonçalves</A></li>
 
 '''
